@@ -48,6 +48,7 @@ entity clkgen is
     clkout: out std_logic;
     clkout1: out std_logic;
     clkout2: out std_logic;
+	clk_1Mhz_out: out std_logic;
     rstout: out std_logic
   );
 end entity clkgen;
@@ -66,6 +67,8 @@ signal clk0: std_ulogic;
 signal clk1: std_ulogic;
 signal clk2: std_ulogic;
 signal clkin_i_2: std_logic;
+signal clk_div: std_logic;
+signal count: integer;
 
 begin
 
@@ -108,6 +111,20 @@ begin
 
   clk1_inst: BUFG port map ( I => clk1, O => clkout1 );
   clk2_inst: BUFG port map ( I => clk2, O => clkout2 );
+  
+process (clk2, rstin) begin
+	if (rstin = '1') then
+		count <= 0;
+	elsif (rising_edge(clk2)) then
+		if (count=95) then
+			clk_div <= not clk_div;
+			count <= 0;
+		else
+			count <= count +1;
+		end if;
+	end if;
+end process;
+clk_1Mhz_out <= clk_div;  
 
 pll_base_inst : PLL_ADV
   generic map

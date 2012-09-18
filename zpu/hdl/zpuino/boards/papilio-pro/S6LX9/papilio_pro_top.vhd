@@ -99,6 +99,7 @@ architecture behave of papilio_pro_top is
     clkout: out std_logic;
     clkout1: out std_logic;
     clkout2: out std_logic;
+	clk_1Mhz_out: out std_logic;	
     rstout: out std_logic
   );
   end component;
@@ -318,8 +319,77 @@ architecture behave of papilio_pro_top is
   );
   end component;
 
+  component wb_sid6581 is
+  port (
+    wb_clk_i: in std_logic;
+    wb_rst_i: in std_logic;
+    wb_dat_o: out std_logic_vector(wordSize-1 downto 0);
+    wb_dat_i: in std_logic_vector(wordSize-1 downto 0);
+    wb_adr_i: in std_logic_vector(maxIObit downto minIObit);
+    wb_we_i:  in std_logic;
+    wb_cyc_i: in std_logic;
+    wb_stb_i: in std_logic;
+    wb_ack_o: out std_logic;
+    wb_inta_o:out std_logic;
+
+    clk_1MHZ: in std_logic;
+    audio_data: out std_logic_vector(17 downto 0)
+
+  );
+  end component wb_sid6581;
+  
+	COMPONENT zpuino_io_YM2149
+	PORT(
+		wb_clk_i : IN std_logic;
+		wb_rst_i : IN std_logic;
+		wb_dat_i : IN std_logic_vector(31 downto 0);
+		wb_adr_i : IN std_logic_vector(26 downto 2);
+		wb_we_i : IN std_logic;
+		wb_cyc_i : IN std_logic;
+		wb_stb_i : IN std_logic;          
+		wb_dat_o : OUT std_logic_vector(31 downto 0);
+		wb_ack_o : OUT std_logic;
+		wb_inta_o : OUT std_logic;
+		data_out : OUT std_logic_vector(7 downto 0)
+		);
+	END COMPONENT;
+
+	COMPONENT zpuino_io_audiomixer
+	PORT(
+		clk : IN std_logic;
+		rst : IN std_logic;
+		ena : IN std_logic;
+		data_in1 : IN std_logic_vector(17 downto 0);
+		data_in2 : IN std_logic_vector(17 downto 0);
+		data_in3 : IN std_logic_vector(17 downto 0);          
+		audio_out : OUT std_logic
+		);
+	END COMPONENT;	
+	
+  component clkgen_sid is
+  port (
+    clkin:  in std_logic;
+    rstin:  in std_logic;
+    clkout: out std_logic;
+    clkout_1mhz: out std_logic;
+    rstout: out std_logic
+  );
+  end component clkgen_sid;	
+
+  signal sid_audio_data, ym2149_audio_dac: std_logic_vector(17 downto 0);
+  signal sid_audio: std_logic;
+  
+  signal ym2149_audio_data, pokey_audio_data: std_logic_vector(7 downto 0);
+  signal platform_audio_sd: std_logic; 
+  signal sigmadelta_raw: std_logic_vector(17 downto 0);  
+  
+  signal uart2_tx, uart2_rx: std_logic;  
+  
+  signal sigmadelta_spp_en:  std_logic_vector(1 downto 0);
+  signal sysclk_1mhz: std_logic;  
 
 begin
+
 
   wb_clk_i <= sysclk;
   wb_rst_i <= sysrst;
@@ -342,6 +412,7 @@ begin
     clkout  => sysclk,
     clkout1  => sysclk_sram_we,
     clkout2  => sysclk_sram_wen,
+	clk_1Mhz_out => sysclk_1mhz,
     rstout  => clkgen_rst
   );
 
@@ -749,6 +820,39 @@ begin
     spp_en        => open,
     sync_in       => '1'
   );
+  
+  -- sigmadelta_inst: zpuino_sigmadelta
+  -- port map (
+    -- wb_clk_i       => wb_clk_i,
+	 	-- wb_rst_i    => wb_rst_i,
+    -- wb_dat_o      => slot_read(5),
+    -- wb_dat_i     => slot_write(5),
+    -- wb_adr_i   => slot_address(5),
+    -- wb_we_i        => slot_we(5),
+    -- wb_cyc_i        => slot_cyc(5),
+    -- wb_stb_i        => slot_stb(5),
+    -- wb_ack_o      => slot_ack(5),
+    -- wb_inta_o => slot_interrupt(5),
+
+	 -- raw_out => sigmadelta_raw,
+    -- spp_data  => sigmadelta_spp_data,
+    -- spp_en    => sigmadelta_spp_en,
+    -- sync_in   => '1'
+  -- );  
+  
+    -- slot5: zpuino_empty_device
+  -- port map (
+    -- wb_clk_i      => wb_clk_i,
+	 	-- wb_rst_i      => wb_rst_i,
+    -- wb_dat_o      => slot_read(5),
+    -- wb_dat_i      => slot_write(5),
+    -- wb_adr_i      => slot_address(5),
+    -- wb_we_i       => slot_we(5),
+    -- wb_cyc_i      => slot_cyc(5),
+    -- wb_stb_i      => slot_stb(5),
+    -- wb_ack_o      => slot_ack(5),
+    -- wb_inta_o     => slot_interrupt(5)
+  -- );
 
   --
   -- IO SLOT 6
@@ -881,18 +985,25 @@ slot9: zpuino_empty_device
   -- IO SLOT 11
   --
 
-  slot11: zpuino_empty_device
+  slot11: zpuino_uart
+  generic map (
+    bits => 4
+  )
   port map (
-    wb_clk_i      => wb_clk_i,
-	 	wb_rst_i      => wb_rst_i,
+    wb_clk_i       => wb_clk_i,
+	 	wb_rst_i    => wb_rst_i,
     wb_dat_o      => slot_read(11),
-    wb_dat_i      => slot_write(11),
-    wb_adr_i      => slot_address(11),
-    wb_we_i       => slot_we(11),
-    wb_cyc_i      => slot_cyc(11),
-    wb_stb_i      => slot_stb(11),
+    wb_dat_i     => slot_write(11),
+    wb_adr_i   => slot_address(11),
+    wb_we_i      => slot_we(11),
+    wb_cyc_i       => slot_cyc(11),
+    wb_stb_i       => slot_stb(11),
     wb_ack_o      => slot_ack(11),
-    wb_inta_o     => slot_interrupt(11)
+
+    wb_inta_o => slot_interrupt(11),
+
+    tx        => uart2_tx,
+    rx        => uart2_rx
   );
 
   --
@@ -917,25 +1028,27 @@ slot9: zpuino_empty_device
   -- IO SLOT 13
   --
 
-  slot13: zpuino_empty_device
+  slot13: zpuino_io_YM2149
   port map (
-    wb_clk_i      => wb_clk_i,
-	 	wb_rst_i      => wb_rst_i,
+    wb_clk_i       => wb_clk_i,
+	 	wb_rst_i       => wb_rst_i,
     wb_dat_o      => slot_read(13),
-    wb_dat_i      => slot_write(13),
-    wb_adr_i      => slot_address(13),
-    wb_we_i       => slot_we(13),
-    wb_cyc_i      => slot_cyc(13),
-    wb_stb_i      => slot_stb(13),
+    wb_dat_i     => slot_write(13),
+    wb_adr_i   => slot_address(13),
+    wb_we_i        => slot_we(13),
+    wb_cyc_i        => slot_cyc(13),
+    wb_stb_i        => slot_stb(13),
     wb_ack_o      => slot_ack(13),
-    wb_inta_o     => slot_interrupt(13)
+    wb_inta_o => slot_interrupt(13),
+
+    data_out => ym2149_audio_data
   );
 
   --
   -- IO SLOT 14
   --
-
-  slot14: zpuino_empty_device
+  
+    slot14: zpuino_empty_device
   port map (
     wb_clk_i      => wb_clk_i,
 	 	wb_rst_i      => wb_rst_i,
@@ -949,9 +1062,44 @@ slot9: zpuino_empty_device
     wb_inta_o     => slot_interrupt(14)
   );
 
+  -- slot14: wb_sid6581
+  -- port map (
+    -- wb_clk_i       => wb_clk_i,
+	 	-- wb_rst_i       => wb_rst_i,
+    -- wb_dat_o      => slot_read(14),
+    -- wb_dat_i     => slot_write(14),
+    -- wb_adr_i   => slot_address(14),
+    -- wb_we_i        => slot_we(14),
+    -- wb_cyc_i        => slot_cyc(14),
+    -- wb_stb_i        => slot_stb(14),
+    -- wb_ack_o      => slot_ack(14),
+    -- wb_inta_o => slot_interrupt(14),
+
+    -- clk_1MHZ    => sysclk_1mhz,
+    -- audio_data  => sid_audio_data
+
+  -- );
+
   --
   -- IO SLOT 15 - do not use
   --
+  
+ -- Audio output for devices
+
+	ym2149_audio_dac <= ym2149_audio_data & "0000000000";
+
+   mixer: zpuino_io_audiomixer
+         port map (
+     clk     => wb_clk_i,
+     rst     => wb_rst_i,
+     ena     => '1',
+     
+     data_in1  => (others => '0'),
+     data_in2  => ym2149_audio_dac,
+     data_in3  => (others => '0'),
+     
+     audio_out => platform_audio_sd
+     );  
 
   process(gpio_spp_read, spi_pf_mosi, spi_pf_sck,
           sigmadelta_spp_data,timers_pwm,
@@ -966,10 +1114,13 @@ slot9: zpuino_empty_device
     gpio_spp_data(2)  <= timers_pwm(1);            -- PPS2 : TIMER1
     gpio_spp_data(3)  <= spi2_mosi;                -- PPS3 : USPI MOSI
     gpio_spp_data(4)  <= spi2_sck;                 -- PPS4 : USPI SCK
-    gpio_spp_data(5)  <= sigmadelta_spp_data(1);   -- PPS5 : SIGMADELTA1 DATA
+    gpio_spp_data(5)  <= platform_audio_sd;   -- PPS5 : SIGMADELTA1 DATA
+    gpio_spp_data(6) <= uart2_tx;               -- PPS6 : UART2 DATA
+    gpio_spp_data(8) <= platform_audio_sd;	
 
     -- PPS inputs
     spi2_miso         <= gpio_spp_read(0);         -- PPS0 : USPI MISO
+    uart2_rx <= gpio_spp_read(1);              -- PPS0 : USPI MISO	
 
   end process;
 

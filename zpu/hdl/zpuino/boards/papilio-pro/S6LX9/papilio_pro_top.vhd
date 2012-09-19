@@ -150,13 +150,13 @@ architecture behave of papilio_pro_top is
   constant spp_cap_in: std_logic_vector(zpuino_gpio_count-1 downto 0) :=
     "00" &                -- SPI CS and LED
     "1111111111111111" &  -- Wing C
-    "0000000000000000" &  -- Wing B
+    "1111111111111111" &  -- Wing B
     "1111111111111111";   -- Wing A
 
   constant spp_cap_out: std_logic_vector(zpuino_gpio_count-1 downto 0) :=
     "00" &                -- SPI CS and LED
     "1111111111111111" &  -- Wing C
-    "0000000000000000" &  -- Wing B
+    "1111111111111111" &  -- Wing B
     "1111111111111111";   -- Wing A
 
   -- I/O Signals
@@ -803,42 +803,42 @@ begin
   -- IO SLOT 5
   --
 
-  sigmadelta_inst: zpuino_sigmadelta
-  port map (
-    wb_clk_i      => wb_clk_i,
-	 	wb_rst_i      => wb_rst_i,
-    wb_dat_o      => slot_read(5),
-    wb_dat_i      => slot_write(5),
-    wb_adr_i      => slot_address(5),
-    wb_we_i       => slot_we(5),
-    wb_cyc_i      => slot_cyc(5),
-    wb_stb_i      => slot_stb(5),
-    wb_ack_o      => slot_ack(5),
-    wb_inta_o     => slot_interrupt(5),
-
-    spp_data      => sigmadelta_spp_data,
-    spp_en        => open,
-    sync_in       => '1'
-  );
-  
   -- sigmadelta_inst: zpuino_sigmadelta
   -- port map (
-    -- wb_clk_i       => wb_clk_i,
-	 	-- wb_rst_i    => wb_rst_i,
+    -- wb_clk_i      => wb_clk_i,
+	 	-- wb_rst_i      => wb_rst_i,
     -- wb_dat_o      => slot_read(5),
-    -- wb_dat_i     => slot_write(5),
-    -- wb_adr_i   => slot_address(5),
-    -- wb_we_i        => slot_we(5),
-    -- wb_cyc_i        => slot_cyc(5),
-    -- wb_stb_i        => slot_stb(5),
+    -- wb_dat_i      => slot_write(5),
+    -- wb_adr_i      => slot_address(5),
+    -- wb_we_i       => slot_we(5),
+    -- wb_cyc_i      => slot_cyc(5),
+    -- wb_stb_i      => slot_stb(5),
     -- wb_ack_o      => slot_ack(5),
-    -- wb_inta_o => slot_interrupt(5),
+    -- wb_inta_o     => slot_interrupt(5),
 
-	 -- raw_out => sigmadelta_raw,
-    -- spp_data  => sigmadelta_spp_data,
-    -- spp_en    => sigmadelta_spp_en,
-    -- sync_in   => '1'
-  -- );  
+    -- spp_data      => sigmadelta_spp_data,
+    -- spp_en        => open,
+    -- sync_in       => '1'
+  -- );
+  
+  sigmadelta_inst: zpuino_sigmadelta
+  port map (
+    wb_clk_i       => wb_clk_i,
+	 	wb_rst_i    => wb_rst_i,
+    wb_dat_o      => slot_read(5),
+    wb_dat_i     => slot_write(5),
+    wb_adr_i   => slot_address(5),
+    wb_we_i        => slot_we(5),
+    wb_cyc_i        => slot_cyc(5),
+    wb_stb_i        => slot_stb(5),
+    wb_ack_o      => slot_ack(5),
+    wb_inta_o => slot_interrupt(5),
+
+	 raw_out => sigmadelta_raw,
+    spp_data  => sigmadelta_spp_data,
+    spp_en    => sigmadelta_spp_en,
+    sync_in   => '1'
+  );  
   
     -- slot5: zpuino_empty_device
   -- port map (
@@ -1048,37 +1048,37 @@ slot9: zpuino_empty_device
   -- IO SLOT 14
   --
   
-    slot14: zpuino_empty_device
-  port map (
-    wb_clk_i      => wb_clk_i,
-	 	wb_rst_i      => wb_rst_i,
-    wb_dat_o      => slot_read(14),
-    wb_dat_i      => slot_write(14),
-    wb_adr_i      => slot_address(14),
-    wb_we_i       => slot_we(14),
-    wb_cyc_i      => slot_cyc(14),
-    wb_stb_i      => slot_stb(14),
-    wb_ack_o      => slot_ack(14),
-    wb_inta_o     => slot_interrupt(14)
-  );
-
-  -- slot14: wb_sid6581
+    -- slot14: zpuino_empty_device
   -- port map (
-    -- wb_clk_i       => wb_clk_i,
-	 	-- wb_rst_i       => wb_rst_i,
+    -- wb_clk_i      => wb_clk_i,
+	 	-- wb_rst_i      => wb_rst_i,
     -- wb_dat_o      => slot_read(14),
-    -- wb_dat_i     => slot_write(14),
-    -- wb_adr_i   => slot_address(14),
-    -- wb_we_i        => slot_we(14),
-    -- wb_cyc_i        => slot_cyc(14),
-    -- wb_stb_i        => slot_stb(14),
+    -- wb_dat_i      => slot_write(14),
+    -- wb_adr_i      => slot_address(14),
+    -- wb_we_i       => slot_we(14),
+    -- wb_cyc_i      => slot_cyc(14),
+    -- wb_stb_i      => slot_stb(14),
     -- wb_ack_o      => slot_ack(14),
-    -- wb_inta_o => slot_interrupt(14),
-
-    -- clk_1MHZ    => sysclk_1mhz,
-    -- audio_data  => sid_audio_data
-
+    -- wb_inta_o     => slot_interrupt(14)
   -- );
+
+  slot14: wb_sid6581
+  port map (
+    wb_clk_i       => wb_clk_i,
+	 	wb_rst_i       => wb_rst_i,
+    wb_dat_o      => slot_read(14),
+    wb_dat_i     => slot_write(14),
+    wb_adr_i   => slot_address(14),
+    wb_we_i        => slot_we(14),
+    wb_cyc_i        => slot_cyc(14),
+    wb_stb_i        => slot_stb(14),
+    wb_ack_o      => slot_ack(14),
+    wb_inta_o => slot_interrupt(14),
+
+    clk_1MHZ    => sysclk_1mhz,
+    audio_data  => sid_audio_data
+
+  );
 
   --
   -- IO SLOT 15 - do not use
@@ -1094,9 +1094,9 @@ slot9: zpuino_empty_device
      rst     => wb_rst_i,
      ena     => '1',
      
-     data_in1  => (others => '0'),
+     data_in1  => sid_audio_data,
      data_in2  => ym2149_audio_dac,
-     data_in3  => (others => '0'),
+     data_in3  => sigmadelta_raw,
      
      audio_out => platform_audio_sd
      );  

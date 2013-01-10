@@ -353,6 +353,22 @@ architecture behave of papilio_pro_top is
 		data_out : OUT std_logic_vector(7 downto 0)
 		);
 	END COMPONENT;
+	
+	COMPONENT zpuino_io_pokey
+	PORT(
+		wb_clk_i : IN std_logic;
+		wb_rst_i : IN std_logic;
+		wb_dat_i : IN std_logic_vector(31 downto 0);
+		wb_adr_i : IN std_logic_vector(26 downto 2);
+		wb_we_i : IN std_logic;
+		wb_cyc_i : IN std_logic;
+		wb_stb_i : IN std_logic;          
+		wb_dat_o : OUT std_logic_vector(31 downto 0);
+		wb_ack_o : OUT std_logic;
+		wb_inta_o : OUT std_logic;
+		data_out : OUT std_logic_vector(7 downto 0)
+		);
+	END COMPONENT;	
 
 	COMPONENT zpuino_io_audiomixer
 	PORT(
@@ -376,7 +392,7 @@ architecture behave of papilio_pro_top is
   );
   end component clkgen_sid;	
 
-  signal sid_audio_data, ym2149_audio_dac: std_logic_vector(17 downto 0);
+  signal sid_audio_data, ym2149_audio_dac, pokey_audio_dac: std_logic_vector(17 downto 0);
   signal sid_audio: std_logic;
   
   signal ym2149_audio_data, pokey_audio_data: std_logic_vector(7 downto 0);
@@ -1010,7 +1026,7 @@ slot9: zpuino_empty_device
   -- IO SLOT 12
   --
 
-  slot12: zpuino_empty_device
+  slot12: zpuino_io_POKEY
   port map (
     wb_clk_i      => wb_clk_i,
 	 	wb_rst_i      => wb_rst_i,
@@ -1021,7 +1037,9 @@ slot9: zpuino_empty_device
     wb_cyc_i      => slot_cyc(12),
     wb_stb_i      => slot_stb(12),
     wb_ack_o      => slot_ack(12),
-    wb_inta_o     => slot_interrupt(12)
+    wb_inta_o     => slot_interrupt(12),
+	
+	data_out => pokey_audio_data
   );
 
   --
@@ -1087,6 +1105,7 @@ slot9: zpuino_empty_device
  -- Audio output for devices
 
 	ym2149_audio_dac <= ym2149_audio_data & "0000000000";
+	pokey_audio_dac <= pokey_audio_data & "0000000000";
 
    mixer: zpuino_io_audiomixer
          port map (
@@ -1096,7 +1115,7 @@ slot9: zpuino_empty_device
      
      data_in1  => sid_audio_data,
      data_in2  => ym2149_audio_dac,
-     data_in3  => sigmadelta_raw,
+     data_in3  => pokey_audio_dac,
      
      audio_out => platform_audio_sd
      );  

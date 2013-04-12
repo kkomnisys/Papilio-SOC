@@ -1005,12 +1005,15 @@ slot9: zpuino_empty_device
     tx        => uart2_tx,
     rx        => uart2_rx
   );
-
+ 
+  
   --
   -- IO SLOT 12
   --
 
-  slot12: zpuino_empty_device
+  ym2149_audio_dac <= ym2149_audio_data & "0000000000";
+  
+  slot12: zpuino_audiomixer2
   port map (
     wb_clk_i      => wb_clk_i,
 	 	wb_rst_i      => wb_rst_i,
@@ -1021,7 +1024,15 @@ slot9: zpuino_empty_device
     wb_cyc_i      => slot_cyc(12),
     wb_stb_i      => slot_stb(12),
     wb_ack_o      => slot_ack(12),
-    wb_inta_o     => slot_interrupt(12)
+    wb_inta_o     => slot_interrupt(12),
+	
+    ena     => '1',
+     
+    data_in1  => sid_audio_data,
+    data_in2  => ym2149_audio_dac,
+    data_in3  => sigmadelta_raw,	
+	
+	audio_out => platform_audio_sd
   );
 
   --
@@ -1047,20 +1058,6 @@ slot9: zpuino_empty_device
   --
   -- IO SLOT 14
   --
-  
-    -- slot14: zpuino_empty_device
-  -- port map (
-    -- wb_clk_i      => wb_clk_i,
-	 	-- wb_rst_i      => wb_rst_i,
-    -- wb_dat_o      => slot_read(14),
-    -- wb_dat_i      => slot_write(14),
-    -- wb_adr_i      => slot_address(14),
-    -- wb_we_i       => slot_we(14),
-    -- wb_cyc_i      => slot_cyc(14),
-    -- wb_stb_i      => slot_stb(14),
-    -- wb_ack_o      => slot_ack(14),
-    -- wb_inta_o     => slot_interrupt(14)
-  -- );
 
   slot14: wb_sid6581
   port map (
@@ -1086,20 +1083,20 @@ slot9: zpuino_empty_device
   
  -- Audio output for devices
 
-	ym2149_audio_dac <= ym2149_audio_data & "0000000000";
+	-- ym2149_audio_dac <= ym2149_audio_data & "0000000000";
 
-   mixer: zpuino_io_audiomixer
-         port map (
-     clk     => wb_clk_i,
-     rst     => wb_rst_i,
-     ena     => '1',
+   -- mixer: zpuino_io_audiomixer
+         -- port map (
+     -- clk     => wb_clk_i,
+     -- rst     => wb_rst_i,
+     -- ena     => '1',
      
-     data_in1  => sid_audio_data,
-     data_in2  => ym2149_audio_dac,
-     data_in3  => sigmadelta_raw,
+     -- data_in1  => sid_audio_data,
+     -- data_in2  => ym2149_audio_dac,
+     -- data_in3  => sigmadelta_raw,
      
-     audio_out => platform_audio_sd
-     );  
+     -- audio_out => platform_audio_sd
+     -- );  
 
   process(gpio_spp_read, spi_pf_mosi, spi_pf_sck,
           sigmadelta_spp_data,timers_pwm,

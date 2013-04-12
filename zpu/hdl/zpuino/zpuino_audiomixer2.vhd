@@ -143,6 +143,7 @@ process(r,wb_clk_i,wb_rst_i)
  variable idx: integer;
 begin
   w := r;
+  w.ack := '0';
 
   case r.state is
     when idle =>

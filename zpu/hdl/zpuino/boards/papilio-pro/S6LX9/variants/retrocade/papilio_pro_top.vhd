@@ -380,7 +380,7 @@ architecture behave of papilio_pro_top is
   signal sid_audio: std_logic;
   
   signal ym2149_audio_data, pokey_audio_data: std_logic_vector(7 downto 0);
-  signal platform_audio_sd: std_logic; 
+  signal platform_audio_sd: std_logic_vector(1 downto 0); 
   signal sigmadelta_raw: std_logic_vector(17 downto 0);  
   
   signal uart2_tx, uart2_rx: std_logic;  
@@ -1016,7 +1016,7 @@ slot9: zpuino_empty_device
   slot12: zpuino_audiomixer2
   port map (
     wb_clk_i      => wb_clk_i,
-	 	wb_rst_i      => wb_rst_i,
+	wb_rst_i      => wb_rst_i,
     wb_dat_o      => slot_read(12),
     wb_dat_i      => slot_write(12),
     wb_adr_i      => slot_address(12),
@@ -1030,7 +1030,12 @@ slot9: zpuino_empty_device
      
     data_in1  => sid_audio_data,
     data_in2  => ym2149_audio_dac,
-    data_in3  => sigmadelta_raw,	
+    data_in3  => sigmadelta_raw,
+	data_in4  => "000000000000000000",
+	data_in5  => "000000000000000000",
+	data_in6  => "000000000000000000",
+	data_in7  => "000000000000000000",
+	data_in8  => "000000000000000000",
 	
 	audio_out => platform_audio_sd
   );
@@ -1111,9 +1116,9 @@ slot9: zpuino_empty_device
     gpio_spp_data(2)  <= timers_pwm(1);            -- PPS2 : TIMER1
     gpio_spp_data(3)  <= spi2_mosi;                -- PPS3 : USPI MOSI
     gpio_spp_data(4)  <= spi2_sck;                 -- PPS4 : USPI SCK
-    gpio_spp_data(5)  <= platform_audio_sd;   -- PPS5 : SIGMADELTA1 DATA
+    gpio_spp_data(5)  <= platform_audio_sd(0);   -- PPS5 : SIGMADELTA1 DATA
     gpio_spp_data(6) <= uart2_tx;               -- PPS6 : UART2 DATA
-    gpio_spp_data(8) <= platform_audio_sd;	
+    gpio_spp_data(8) <= platform_audio_sd(1);	
 
     -- PPS inputs
     spi2_miso         <= gpio_spp_read(0);         -- PPS0 : USPI MISO

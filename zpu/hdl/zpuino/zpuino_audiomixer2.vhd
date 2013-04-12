@@ -44,7 +44,7 @@ library work;
 
 entity zpuino_audiomixer2 is
   generic (
-    bits: integer := 17;
+    bits: integer := 18;
     volbits: integer := 8;
     entries: integer range 2 to 8 := 8
   );

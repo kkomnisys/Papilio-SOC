@@ -1,32 +1,32 @@
-Release 14.2 Map P.28xd (nt64)
+Release 14.1 Map P.15xf (lin)
 Xilinx Mapping Report File for Design 'papilio_pro_top'
 
 Design Information
 ------------------
-Command Line   : map -intstyle ise -p xc6slx9-2-tqg144 -detail -ir off
+Command Line   : map -intstyle ise -mt 2 -p xc6slx9-2-tqg144 -detail -ir off
 -ignore_keep_hierarchy -pr b -timing -ol high -logic_opt on -o papilio_pro.ncd
 papilio_pro.ngd papilio_pro.pcf 
 Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Wed Apr 03 17:05:40 2013
+Mapped Date    : Tue Apr 16 18:22:55 2013
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:   10
 Slice Logic Utilization:
-  Number of Slice Registers:                 3,298 out of  11,440   28%
-    Number used as Flip Flops:               3,297
+  Number of Slice Registers:                 3,704 out of  11,440   32%
+    Number used as Flip Flops:               3,704
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
-    Number used as AND/OR logics:                1
-  Number of Slice LUTs:                      3,833 out of   5,720   67%
-    Number used as logic:                    3,724 out of   5,720   65%
-      Number using O6 output only:           2,608
-      Number using O5 output only:             215
-      Number using O5 and O6:                  901
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                      4,282 out of   5,720   74%
+    Number used as logic:                    4,195 out of   5,720   73%
+      Number using O6 output only:           3,063
+      Number using O5 output only:             213
+      Number using O5 and O6:                  919
       Number used as ROM:                        0
     Number used as Memory:                      52 out of   1,440    3%
       Number used as Dual Port RAM:              8
@@ -38,21 +38,21 @@ Slice Logic Utilization:
         Number using O6 output only:             4
         Number using O5 output only:             0
         Number using O5 and O6:                 40
-    Number used exclusively as route-thrus:     57
-      Number with same-slice register load:     34
+    Number used exclusively as route-thrus:     35
+      Number with same-slice register load:     12
       Number with same-slice carry load:        23
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 1,343 out of   1,430   93%
-  Nummber of MUXCYs used:                    1,000 out of   2,860   34%
-  Number of LUT Flip Flop pairs used:        4,444
-    Number with an unused Flip Flop:         1,462 out of   4,444   32%
-    Number with an unused LUT:                 611 out of   4,444   13%
-    Number of fully used LUT-FF pairs:       2,371 out of   4,444   53%
-    Number of unique control sets:             258
+  Number of occupied Slices:                 1,409 out of   1,430   98%
+  Nummber of MUXCYs used:                    1,232 out of   2,860   43%
+  Number of LUT Flip Flop pairs used:        4,877
+    Number with an unused Flip Flop:         1,466 out of   4,877   30%
+    Number with an unused LUT:                 595 out of   4,877   12%
+    Number of fully used LUT-FF pairs:       2,816 out of   4,877   57%
+    Number of unique control sets:             281
     Number of slice register sites lost
-      to control set restrictions:             747 out of  11,440    6%
+      to control set restrictions:             820 out of  11,440    7%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -66,7 +66,7 @@ IO Utilization:
     IOB Flip Flops:                            105
 
 Specific Feature Utilization:
-  Number of RAMB16BWERs:                        11 out of      32   34%
+  Number of RAMB16BWERs:                        13 out of      32   40%
   Number of RAMB8BWERs:                          1 out of      64    1%
   Number of BUFIO2/BUFIO2_2CLKs:                 2 out of      32    6%
     Number used as BUFIO2s:                      2
@@ -91,7 +91,7 @@ Specific Feature Utilization:
   Number of BUFHs:                               0 out of     128    0%
   Number of BUFPLLs:                             0 out of       8    0%
   Number of BUFPLL_MCBs:                         0 out of       4    0%
-  Number of DSP48A1s:                            7 out of      16   43%
+  Number of DSP48A1s:                            9 out of      16   56%
   Number of ICAPs:                               0 out of       1    0%
   Number of MCBs:                                0 out of       2    0%
   Number of PCILOGICSEs:                         0 out of       2    0%
@@ -102,9 +102,9 @@ Specific Feature Utilization:
 
 Average Fanout of Non-Clock Nets:                3.57
 
-Peak Memory Usage:  447 MB
-Total REAL time to MAP completion:  2 mins 56 secs 
-Total CPU time to MAP completion:   2 mins 50 secs 
+Peak Memory Usage:  299 MB
+Total REAL time to MAP completion:  1 mins 30 secs 
+Total CPU time to MAP completion (all processors):   1 mins 32 secs 
 
 Table of Contents
 -----------------
@@ -127,6 +127,9 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
 WARNING:Pack:2693 - The I/O component SPI_SCK has conflicting DRIVE property
    values. The symbol "SPI_SCK" has property value "8." The symbol
    "ospiclk/obufi" has property value "12." The system will use the property
@@ -170,6 +173,10 @@ Section 3 - Informational
 -------------------------
 INFO:Map:220 - The command line option -timing is automatically supported for
    this architecture. Therefore, it is not necessary to specify this option.
+INFO:Map:284 - Map is running with the multi-threading option on. Map currently
+   supports the use of up to 2 processors. Based on the the user options and
+   machine load, Map will use 2 processors during this run.
+INFO:Security:54 - 'xc6slx9' is a WebPack part.
 INFO:LIT:243 - Logical network slot11/fifo_instance/Mram_memory7/SPO has no
    load.
 INFO:LIT:243 - Logical network slot11/fifo_instance/Mram_memory6/SPO has no
@@ -200,7 +207,7 @@ INFO:Pack:1650 - Map created a placed design.
 Section 4 - Removed Logic Summary
 ---------------------------------
    2 block(s) optimized away
- 234 Block(s) redundant
+ 239 Block(s) redundant
 
 Section 5 - Removed Logic
 -------------------------
@@ -212,6 +219,13 @@ VCC 		XST_VCC
 
 Redundant Block(s):
 TYPE 		BLOCK
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_PWR_234_o_add_36_OUT_cy<1>_rt
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_PWR_234_o_add_36_OUT_cy<3>_rt
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_PWR_234_o_add_36_OUT_cy<4>_rt
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_PWR_234_o_add_36_OUT_cy<6>_rt
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_PWR_234_o_add_36_OUT_cy<7>_rt
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_PWR_234_o_add_36_OUT_cy<8>_rt
+LUT1 		slot14/sid/fblk.filters/Madd_r_Vf[17]_r_Vnf[17]_add_35_OUT_cy<0>_rt
 LUT1 		sram_inst/ctrl/Madd_r_rf_counter[31]_GND_199_o_add_22_OUT_cy<30>_rt
 LUT1 		sram_inst/ctrl/Madd_r_rf_counter[31]_GND_199_o_add_22_OUT_cy<29>_rt
 LUT1 		sram_inst/ctrl/Madd_r_rf_counter[31]_GND_199_o_add_22_OUT_cy<28>_rt
@@ -397,27 +411,11 @@ LUT1 		slot13/Mcount_tone_gen_cnt_1_cy<3>_rt
 LUT1 		slot13/Mcount_tone_gen_cnt_1_cy<2>_rt
 LUT1 		slot13/Mcount_tone_gen_cnt_1_cy<1>_rt
 LUT1 		slot13/Maccum_audio_mix_cy<8>_rt
-LUT1 		slot13/Msub_GND_233_o_GND_233_o_sub_97_OUT<11:0>_cy<0>_rt
-LUT1 		slot13/Msub_GND_233_o_GND_233_o_sub_103_OUT<11:0>_cy<0>_rt
-LUT1 		slot13/Msub_GND_233_o_GND_233_o_sub_132_OUT<15:0>_cy<0>_rt
-LUT1 		slot13/Msub_GND_233_o_GND_233_o_sub_100_OUT<11:0>_cy<0>_rt
-LUT1 		slot13/Msub_predivcnt[31]_GND_233_o_sub_71_OUT<31:0>_cy<0>_rt
-LUT1 		slot14/sid/sid_voice_3/Mcount_divider_counter_cy<0>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<22>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<21>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<20>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<19>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<18>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<17>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<16>_rt
-LUT1 		slot14/sid/sid_voice_2/Mcount_divider_counter_cy<0>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<22>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<21>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<20>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<19>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<18>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<17>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<16>_rt
+LUT1 		slot13/Msub_GND_326_o_GND_326_o_sub_97_OUT<11:0>_cy<0>_rt
+LUT1 		slot13/Msub_GND_326_o_GND_326_o_sub_103_OUT<11:0>_cy<0>_rt
+LUT1 		slot13/Msub_GND_326_o_GND_326_o_sub_132_OUT<15:0>_cy<0>_rt
+LUT1 		slot13/Msub_GND_326_o_GND_326_o_sub_100_OUT<11:0>_cy<0>_rt
+LUT1 		slot13/Msub_predivcnt[31]_GND_326_o_sub_71_OUT<31:0>_cy<0>_rt
 LUT1 		slot14/sid/sid_voice_1/Mcount_divider_counter_cy<0>_rt
 LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_cy<22>_rt
 LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_cy<21>_rt
@@ -426,7 +424,22 @@ LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_cy<19>_rt
 LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_cy<18>_rt
 LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_cy<17>_rt
 LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_cy<16>_rt
-LUT1 		mixer/Maccum_audio_mix_cy<18>_rt
+LUT1 		slot14/sid/sid_voice_2/Mcount_divider_counter_cy<0>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<22>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<21>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<20>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<19>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<18>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<17>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_cy<16>_rt
+LUT1 		slot14/sid/sid_voice_3/Mcount_divider_counter_cy<0>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<22>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<21>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<20>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<19>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<18>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<17>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_cy<16>_rt
 LUT1 		sram_inst/ctrl/Madd_r_rf_counter[31]_GND_199_o_add_22_OUT_xor<31>_rt
 LUT1 		zpuino/core/Madd_prefr_spnext[12]_GND_56_o_add_186_OUT_xor<10>_rt
 LUT1 		zpuino/core/Madd_prefr_sp[12]_GND_56_o_add_227_OUT_xor<10>_rt
@@ -442,10 +455,9 @@ LUT1 		slot13/Mcount_tone_gen_cnt_2_xor<11>_rt
 LUT1 		slot13/Mcount_env_gen_cnt_xor<15>_rt
 LUT1 		slot13/Mcount_tone_gen_cnt_1_xor<11>_rt
 LUT1 		slot13/Maccum_audio_mix_xor<9>_rt
-LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_xor<23>_rt
-LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_xor<23>_rt
 LUT1 		slot14/sid/sid_voice_1/Maccum_accumulator_xor<23>_rt
-LUT1 		mixer/Maccum_audio_mix_xor<19>_rt
+LUT1 		slot14/sid/sid_voice_2/Maccum_accumulator_xor<23>_rt
+LUT1 		slot14/sid/sid_voice_3/Maccum_accumulator_xor<23>_rt
 INV 		sram_inst/ctrl/not_clock_100_delayed_3ns1_INV_0
 
 Section 6 - IOB Properties
@@ -740,12 +752,15 @@ Section 12 - Control Set Information
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Clock Signal | Reset Signal                                        | Set Signal | Enable Signal                                                         | Slice Load Count | Bel Load Count |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| sysclk       |                                                     |            |                                                                       | 98               | 309            |
+| sysclk       |                                                     |            |                                                                       | 107              | 313            |
 | sysclk       |                                                     |            | GLOBAL_LOGIC1                                                         | 8                | 50             |
+| sysclk       |                                                     |            | audioblk.slot12/_n0272_inv                                            | 1                | 2              |
+| sysclk       |                                                     |            | audioblk.slot12/_n0286_inv                                            | 8                | 32             |
+| sysclk       |                                                     |            | audioblk.slot12/outputs[0].sd/Eqn_0_mand                              | 3                | 6              |
+| sysclk       |                                                     |            | audioblk.slot12/wb_cyc_i_r_ack_AND_2008_o                             | 8                | 16             |
 | sysclk       |                                                     |            | crc16_inst/_n0135_inv                                                 | 1                | 8              |
 | sysclk       |                                                     |            | crc16_inst/_n0142_inv                                                 | 8                | 32             |
 | sysclk       |                                                     |            | crc16_inst/_n0155_inv                                                 | 3                | 16             |
-| sysclk       |                                                     |            | crc16_inst/wb_rst_i_inv                                               | 3                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n1908_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n1918_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n1928_inv                                                  | 2                | 6              |
@@ -755,11 +770,11 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | gpio_inst/_n1968_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n1978_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n1988_inv                                                  | 2                | 6              |
-| sysclk       |                                                     |            | gpio_inst/_n1998_inv                                                  | 1                | 6              |
+| sysclk       |                                                     |            | gpio_inst/_n1998_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2008_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2018_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2028_inv                                                  | 2                | 6              |
-| sysclk       |                                                     |            | gpio_inst/_n2038_inv                                                  | 1                | 6              |
+| sysclk       |                                                     |            | gpio_inst/_n2038_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2048_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2058_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2068_inv                                                  | 2                | 6              |
@@ -769,7 +784,7 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | gpio_inst/_n2108_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2118_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2128_inv                                                  | 2                | 6              |
-| sysclk       |                                                     |            | gpio_inst/_n2138_inv                                                  | 2                | 6              |
+| sysclk       |                                                     |            | gpio_inst/_n2138_inv                                                  | 1                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2148_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2158_inv                                                  | 2                | 6              |
 | sysclk       |                                                     |            | gpio_inst/_n2168_inv                                                  | 2                | 6              |
@@ -798,7 +813,6 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | gpio_inst/_n2398_inv                                                  | 2                | 7              |
 | sysclk       |                                                     |            | gpio_inst/gpio_q_0_ce                                                 | 8                | 32             |
 | sysclk       |                                                     |            | gpio_inst/gpio_q_32_ce                                                | 5                | 18             |
-| sysclk       |                                                     |            | mixer/cnt_div[1]_GND_243_o_equal_7_o                                  | 5                | 19             |
 | sysclk       |                                                     |            | sigmadelta_inst/_n0209_inv                                            | 1                | 1              |
 | sysclk       |                                                     |            | sigmadelta_inst/_n0212_inv                                            | 5                | 18             |
 | sysclk       |                                                     |            | slot0/_n0092_inv                                                      | 1                | 2              |
@@ -814,7 +828,7 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | slot11/_n0048_inv                                                     | 4                | 16             |
 | sysclk       |                                                     |            | slot11/fifo_instance/BUS_0017                                         | 2                | 16             |
 | sysclk       |                                                     |            | slot11/rx_inst/_n0101_inv                                             | 2                | 3              |
-| sysclk       |                                                     |            | slot11/rx_inst/_n0108_inv                                             | 1                | 8              |
+| sysclk       |                                                     |            | slot11/rx_inst/_n0108_inv                                             | 2                | 8              |
 | sysclk       |                                                     |            | slot11/rx_inst/_n0115_inv                                             | 2                | 8              |
 | sysclk       |                                                     |            | slot11/rx_inst/baudgen/_n0020_inv                                     | 1                | 4              |
 | sysclk       |                                                     |            | slot11/tx_core/_n0094                                                 | 2                | 8              |
@@ -825,6 +839,13 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | slot13/_n0516_inv                                                     | 1                | 1              |
 | sysclk       |                                                     |            | slot13/divclken                                                       | 3                | 11             |
 | sysclk       |                                                     |            | slot13/ena_div                                                        | 1                | 3              |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/GND_344_o_r_state[31]_equal_39_o              | 4                | 16             |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/GND_344_o_r_state[31]_equal_41_o              | 4                | 18             |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/GND_344_o_r_state[31]_equal_42_o              | 7                | 29             |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/GND_344_o_r_state[31]_equal_50_o              | 5                | 18             |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/_n0481_inv                                    | 5                | 17             |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/_n0513_inv                                    | 5                | 17             |
+| sysclk       |                                                     |            | slot14/sid/fblk.filters/_n0553_inv                                    | 12               | 36             |
 | sysclk       |                                                     |            | sram_inst/ctrl/_n0454_inv                                             | 1                | 2              |
 | sysclk       |                                                     |            | sram_inst/ctrl/_n0470_inv                                             | 5                | 21             |
 | sysclk       |                                                     |            | sram_inst/ctrl/_n0476_inv                                             | 9                | 36             |
@@ -839,19 +860,19 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | timers_inst/timer1_inst/_n0143_inv                                    | 2                | 8              |
 | sysclk       |                                                     |            | timers_inst/timer1_inst/_n0150_inv                                    | 2                | 8              |
 | sysclk       |                                                     |            | timers_inst/timer1_inst/_n0165_inv                                    | 1                | 1              |
-| sysclk       |                                                     |            | uart_inst/_n0048_inv                                                  | 3                | 16             |
+| sysclk       |                                                     |            | uart_inst/_n0048_inv                                                  | 4                | 16             |
 | sysclk       |                                                     |            | uart_inst/rx_inst/_n0101_inv                                          | 1                | 3              |
-| sysclk       |                                                     |            | uart_inst/rx_inst/_n0108_inv                                          | 1                | 8              |
+| sysclk       |                                                     |            | uart_inst/rx_inst/_n0108_inv                                          | 2                | 8              |
 | sysclk       |                                                     |            | uart_inst/rx_inst/_n0115_inv                                          | 2                | 8              |
 | sysclk       |                                                     |            | uart_inst/rx_inst/baudgen/_n0020_inv                                  | 1                | 4              |
 | sysclk       |                                                     |            | uart_inst/tx_core/_n0094                                              | 2                | 8              |
 | sysclk       |                                                     |            | uart_inst/tx_core/_n0102_inv                                          | 2                | 8              |
 | sysclk       |                                                     |            | uart_inst/tx_timer/_n0020_inv                                         | 1                | 4              |
-| sysclk       |                                                     |            | zpuino/core/_n1423                                                    | 19               | 57             |
-| sysclk       |                                                     |            | zpuino/core/_n14231                                                   | 10               | 32             |
+| sysclk       |                                                     |            | zpuino/core/_n1423                                                    | 18               | 57             |
+| sysclk       |                                                     |            | zpuino/core/_n14231                                                   | 11               | 32             |
+| sysclk       |                                                     |            | zpuino/core/_n1003_inv1                                               | 1                | 7              |
 | sysclk       |                                                     |            | zpuino/core/_n1003_inv11                                              | 13               | 40             |
-| sysclk       |                                                     |            | zpuino/core/_n1003_inv12                                              | 1                | 7              |
-| sysclk       |                                                     |            | zpuino/core/_n1152_inv                                                | 20               | 37             |
+| sysclk       |                                                     |            | zpuino/core/_n1152_inv                                                | 21               | 37             |
 | sysclk       |                                                     |            | zpuino/core/_n1175_inv                                                | 26               | 64             |
 | sysclk       |                                                     |            | zpuino/core/cache/_n0190_inv                                          | 1                | 4              |
 | sysclk       |                                                     |            | zpuino/core/decr_valid                                                | 3                | 11             |
@@ -861,100 +882,104 @@ Section 12 - Control Set Information
 | sysclk       |                                                     |            | zpuino/io/_n0197_inv                                                  | 4                | 14             |
 | sysclk       |                                                     |            | zpuino/io/_n0201_inv                                                  | 8                | 32             |
 | sysclk       |                                                     |            | zpuino/io/intr_inst/_n0402                                            | 1                | 2              |
-| sysclk       | clkgen_inst/dcmlocked_rstin_OR_34_o                 |            |                                                                       | 2                | 2              |
-| sysclk       | clkgen_inst/rst1_q                                  |            | rstgen/_n0021_inv                                                     | 8                | 26             |
-| sysclk       | clkgen_inst/rst1_q                                  |            | rstgen/rx_inv                                                         | 1                | 1              |
-| sysclk       | crc16_inst/_n0127                                   |            | crc16_inst/wb_rst_i_inv                                               | 1                | 3              |
-| sysclk       | mixer/cnt_div[1]_GND_243_o_equal_7_o                |            |                                                                       | 5                | 20             |
-| sysclk       | rstgen/rstout1_1                                    |            |                                                                       | 38               | 62             |
+| sysclk       | clkgen_inst/dcmlocked_rstin_OR_34_o                 |            |                                                                       | 3                | 3              |
+| sysclk       | clkgen_inst/rst1_q_1                                |            | rstgen/_n0021_inv                                                     | 8                | 26             |
+| sysclk       | clkgen_inst/rst1_q_1                                |            | rstgen/rx_inv                                                         | 1                | 1              |
+| sysclk       | crc16_inst/_n0127                                   |            | audioblk.slot12/outputs[0].sd/Eqn_0_mand                              | 2                | 3              |
+| sysclk       | rstgen/rstout1_1                                    |            |                                                                       | 10               | 14             |
 | sysclk       | rstgen/rstout1_1                                    |            | gpio_inst/gpio_tris_q_0_ce                                            | 8                | 32             |
 | sysclk       | rstgen/rstout1_1                                    |            | gpio_inst/gpio_tris_q_32_ce                                           | 4                | 16             |
-| sysclk       | rstgen/rstout1_1                                    |            | gpio_inst/ppspin_q_0_ce                                               | 7                | 24             |
-| sysclk       | rstgen/rstout1_1                                    |            | slot0/_n0095_inv                                                      | 2                | 2              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot0/spi_clk_en                                                      | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot0/zspi/_n0100_inv                                                 | 2                | 6              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot0/zspiclk/_n0045_inv                                              | 1                | 3              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot0/zspiclk/_n0049_inv                                              | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot1/_n0095_inv                                                      | 2                | 2              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot1/spi_clk_en                                                      | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot1/zspi/_n0100_inv                                                 | 2                | 6              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot1/zspiclk/_n0045_inv                                              | 1                | 3              |
-| sysclk       | rstgen/rstout1_1                                    |            | slot1/zspiclk/_n0049_inv                                              | 1                | 1              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0434_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0441_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0448_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0455_inv                                                 | 1                | 4              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0462_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0469_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0476_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0483_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0490_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0497_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0504_inv                                                 | 1                | 4              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0511_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0518_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0525_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0532_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0539_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0546_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0553_inv                                                 | 1                | 4              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0560_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0567_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0574_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0581_inv                                                 | 1                | 3              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0588_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0595_inv                                                 | 2                | 7              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/_n0602_inv                                                 | 2                | 8              |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/fblk.filters/GND_344_o_r_state[31]_equal_42_o              | 5                | 18             |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/fblk.filters/GND_344_o_r_state[31]_equal_43_o              | 5                | 18             |
+| sysclk       | rstgen/rstout1_1                                    |            | slot14/sid/fblk.filters/_n0572_inv                                    | 5                | 18             |
 | sysclk       | rstgen/rstout1_1                                    |            | sram_inst/ctrl/_n0339                                                 | 4                | 16             |
 | sysclk       | rstgen/rstout1_1                                    |            | sram_inst/ctrl/_n0705_inv                                             | 5                | 31             |
 | sysclk       | rstgen/rstout1_1                                    |            | sram_inst/ctrl/_n0714_inv                                             | 1                | 1              |
 | sysclk       | rstgen/rstout1_1                                    |            | sram_inst/ctrl/_n0729_inv                                             | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | sram_inst/ctrl/_n0733_inv                                             | 3                | 12             |
-| sysclk       | rstgen/rstout1_1                                    |            | uart_inst/fifo_instance/rd_rdaddr[10]_AND_1238_o                      | 3                | 11             |
-| sysclk       | rstgen/rstout1_1                                    |            | uart_inst/fifo_instance/wr_wraddr[10]_AND_1237_o                      | 3                | 11             |
-| sysclk       | rstgen/rstout1_1                                    |            | uart_inst/rx_inst/rxmvfilter/_n0027_inv                               | 2                | 4              |
-| sysclk       | rstgen/rstout1_1                                    |            | uart_inst/tx_core/_n0129_inv                                          | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | uart_inst/tx_timer/clkout                                             | 2                | 4              |
+| sysclk       | rstgen/rstout1_1                                    |            | sram_inst/ctrl/_n0733_inv                                             | 4                | 12             |
 | sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/Mmux_cache_valid_GND_56_o_MUX_294_o1201                   | 6                | 23             |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/_n1003_inv1                                               | 4                | 23             |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/_n1259_inv                                                | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/_n1292_inv                                                | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/_n1407_inv                                                | 1                | 1              |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/_n1422_inv                                                | 6                | 11             |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/cache/_n0218_inv                                          | 1                | 5              |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/cache/_n0230_inv                                          | 2                | 7              |
-| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/cache/busy_enable_AND_1037_o                              | 1                | 1              |
+| sysclk       | rstgen/rstout1_1                                    |            | zpuino/core/_n1003_inv11                                              | 3                | 16             |
 | sysclk       | rstgen/rstout1_1                                    |            | zpuino/io/intr_inst/_n0413_inv                                        | 5                | 18             |
 | sysclk       | rstgen/rstout1_1                                    |            | zpuino/io/intr_inst/_n0419_inv                                        | 1                | 1              |
 | sysclk       | rstgen/rstout1_1                                    |            | zpuino/io/intr_inst/_n0423_inv                                        | 1                | 2              |
 | sysclk       | rstgen/rstout1_1                                    |            | zpuino/io/intr_inst/_n0427_inv                                        | 1                | 1              |
-| sysclk       | rstgen/rstout1_2                                    |            |                                                                       | 13               | 38             |
+| sysclk       | rstgen/rstout1_2                                    |            |                                                                       | 42               | 89             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0304_inv                                            | 4                | 16             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0311_inv                                            | 4                | 16             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0318_inv                                            | 4                | 16             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0325_inv                                            | 4                | 16             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0332_inv                                            | 4                | 16             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0345_inv                                            | 5                | 18             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0358_inv                                            | 3                | 10             |
+| sysclk       | rstgen/rstout1_2                                    |            | audioblk.slot12/_n0365_inv                                            | 4                | 16             |
 | sysclk       | rstgen/rstout1_2                                    |            | crc16_inst/_n0162_inv                                                 | 4                | 16             |
 | sysclk       | rstgen/rstout1_2                                    |            | crc16_inst/_n0177_inv                                                 | 1                | 1              |
 | sysclk       | rstgen/rstout1_2                                    |            | gpio_inst/gpio_tris_q_32_ce                                           | 1                | 2              |
-| sysclk       | rstgen/rstout1_2                                    |            | gpio_inst/ppspin_q_0_ce                                               | 3                | 8              |
+| sysclk       | rstgen/rstout1_2                                    |            | gpio_inst/ppspin_q_0_ce                                               | 8                | 32             |
 | sysclk       | rstgen/rstout1_2                                    |            | gpio_inst/ppspin_q_100_ce                                             | 8                | 32             |
 | sysclk       | rstgen/rstout1_2                                    |            | gpio_inst/ppspin_q_32_ce                                              | 8                | 32             |
 | sysclk       | rstgen/rstout1_2                                    |            | gpio_inst/ppspin_q_64_ce                                              | 8                | 32             |
 | sysclk       | rstgen/rstout1_2                                    |            | sigmadelta_inst/_n0206_inv                                            | 1                | 1              |
 | sysclk       | rstgen/rstout1_2                                    |            | sigmadelta_inst/sd_en_q<0>                                            | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot0/_n0095_inv                                                      | 2                | 2              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot0/spi_clk_en                                                      | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot0/zspi/_n0100_inv                                                 | 2                | 6              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot0/zspiclk/_n0045_inv                                              | 1                | 3              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot0/zspiclk/_n0049_inv                                              | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot1/_n0095_inv                                                      | 2                | 2              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot1/spi_clk_en                                                      | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot1/zspi/_n0100_inv                                                 | 2                | 6              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot1/zspiclk/_n0045_inv                                              | 1                | 3              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot1/zspiclk/_n0049_inv                                              | 1                | 1              |
 | sysclk       | rstgen/rstout1_2                                    |            | slot11/fifo_instance/rd_rdaddr[3]_AND_1675_o                          | 1                | 4              |
 | sysclk       | rstgen/rstout1_2                                    |            | slot11/fifo_instance/wr_wraddr[3]_AND_1674_o                          | 1                | 4              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot11/rx_inst/rxmvfilter/_n0027_inv                                  | 1                | 4              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot11/rx_inst/rxmvfilter/_n0027_inv                                  | 2                | 4              |
 | sysclk       | rstgen/rstout1_2                                    |            | slot11/tx_core/_n0129_inv                                             | 1                | 1              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot11/tx_timer/clkout                                                | 2                | 5              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0529_inv                                                     | 1                | 4              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0533_inv                                                     | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0537_inv                                                     | 1                | 4              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0541_inv                                                     | 1                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0545_inv                                                     | 1                | 4              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0549_inv                                                     | 2                | 5              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0553_inv                                                     | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0557_inv                                                     | 2                | 5              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0561_inv                                                     | 1                | 5              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0565_inv                                                     | 2                | 5              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0569_inv                                                     | 1                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0573_inv                                                     | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/_n0587_inv                                                     | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot13/env_reset_rstpot                                               | 1                | 4              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0433_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0440_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0454_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0461_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0468_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0475_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0482_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0489_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0503_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0510_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0517_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0524_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0531_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0538_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0552_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0559_inv                                                 | 2                | 8              |
-| sysclk       | rstgen/rstout1_2                                    |            | slot14/sid/_n0566_inv                                                 | 2                | 6              |
+| sysclk       | rstgen/rstout1_2                                    |            | slot11/tx_timer/clkout                                                | 3                | 5              |
 | sysclk       | rstgen/rstout1_2                                    |            | timers_inst/timer0_inst/write_ctrl                                    | 5                | 7              |
-| sysclk       | rstgen/rstout1_2                                    |            | timers_inst/timer1_inst/write_ctrl                                    | 3                | 7              |
+| sysclk       | rstgen/rstout1_2                                    |            | timers_inst/timer1_inst/write_ctrl                                    | 4                | 7              |
+| sysclk       | rstgen/rstout1_2                                    |            | uart_inst/fifo_instance/rd_rdaddr[10]_AND_1238_o                      | 3                | 11             |
+| sysclk       | rstgen/rstout1_2                                    |            | uart_inst/fifo_instance/wr_wraddr[10]_AND_1237_o                      | 3                | 11             |
+| sysclk       | rstgen/rstout1_2                                    |            | uart_inst/rx_inst/rxmvfilter/_n0027_inv                               | 2                | 4              |
+| sysclk       | rstgen/rstout1_2                                    |            | uart_inst/tx_core/_n0129_inv                                          | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | uart_inst/tx_timer/clkout                                             | 2                | 4              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/_n1003_inv11                                              | 1                | 7              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/_n1259_inv                                                | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/_n1292_inv                                                | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/_n1407_inv                                                | 1                | 1              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/_n1422_inv                                                | 5                | 11             |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/cache/_n0218_inv                                          | 1                | 5              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/cache/_n0230_inv                                          | 2                | 7              |
+| sysclk       | rstgen/rstout1_2                                    |            | zpuino/core/cache/busy_enable_AND_1037_o                              | 1                | 1              |
 | sysclk       | slot0/zspi/_n0091_inv1                              |            | slot0/zspi/_n00741                                                    | 1                | 1              |
 | sysclk       | slot0/zspiclk/prescale_reset                        |            |                                                                       | 9                | 24             |
 | sysclk       | slot1/zspi/_n0091_inv1                              |            | slot1/zspi/_n00741                                                    | 1                | 1              |
-| sysclk       | slot1/zspiclk/prescale_reset                        |            |                                                                       | 7                | 24             |
+| sysclk       | slot1/zspiclk/prescale_reset                        |            |                                                                       | 8                | 24             |
 | sysclk       | slot13/_n0455                                       |            | slot13/ena_div_noise                                                  | 1                | 5              |
 | sysclk       | slot13/_n0457                                       |            | slot13/ena_div                                                        | 3                | 12             |
 | sysclk       | slot13/_n0459                                       |            | slot13/ena_div                                                        | 3                | 12             |
@@ -963,41 +988,51 @@ Section 12 - Control Set Information
 | sysclk       | slot13/_n0482                                       |            | slot13/divclken                                                       | 3                | 10             |
 | sysclk       | slot13/divclken_inv                                 |            |                                                                       | 2                | 2              |
 | sysclk       | slot13/env_ena_rstpot                               |            | slot13/ena_div                                                        | 4                | 16             |
-| sysclk       | slot14/sid/_n0426                                   |            | crc16_inst/wb_rst_i_inv                                               | 4                | 8              |
-| sysclk       | sysrst                                              |            |                                                                       | 42               | 94             |
+| sysclk       | slot14/sid/_n0427                                   |            | audioblk.slot12/outputs[0].sd/Eqn_0_mand                              | 3                | 8              |
+| sysclk       | sysrst                                              |            |                                                                       | 43               | 100            |
+| sysclk       | sysrst                                              |            | audioblk.slot12/_n0358_inv                                            | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/_n0529_inv                                                     | 1                | 4              |
+| sysclk       | sysrst                                              |            | slot13/_n0533_inv                                                     | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/_n0537_inv                                                     | 1                | 4              |
+| sysclk       | sysrst                                              |            | slot13/_n0541_inv                                                     | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/_n0545_inv                                                     | 1                | 4              |
+| sysclk       | sysrst                                              |            | slot13/_n0549_inv                                                     | 2                | 5              |
+| sysclk       | sysrst                                              |            | slot13/_n0553_inv                                                     | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/_n0557_inv                                                     | 2                | 5              |
+| sysclk       | sysrst                                              |            | slot13/_n0561_inv                                                     | 2                | 5              |
+| sysclk       | sysrst                                              |            | slot13/_n0565_inv                                                     | 2                | 5              |
+| sysclk       | sysrst                                              |            | slot13/_n0569_inv                                                     | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/_n0573_inv                                                     | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/_n0587_inv                                                     | 2                | 8              |
 | sysclk       | sysrst                                              |            | slot13/divclken                                                       | 1                | 8              |
-| sysclk       | sysrst                                              |            | slot14/sid/_n0447_inv                                                 | 1                | 4              |
-| sysclk       | sysrst                                              |            | slot14/sid/_n0496_inv                                                 | 1                | 4              |
-| sysclk       | sysrst                                              |            | slot14/sid/_n0545_inv                                                 | 1                | 4              |
-| sysclk       | sysrst                                              |            | slot14/sid/_n0566_inv                                                 | 1                | 2              |
-| sysclk       | sysrst                                              |            | slot14/sid/_n0573_inv                                                 | 1                | 4              |
-| sysclk       | sysrst                                              |            | slot14/sid/_n0582_inv                                                 | 2                | 8              |
+| sysclk       | sysrst                                              |            | slot13/env_reset_rstpot                                               | 1                | 4              |
 | sysclk       | sysrst                                              |            | sram_inst/ctrl/_n0611_inv                                             | 11               | 12             |
-| sysclk       | sysrst                                              |            | sram_inst/ctrl/_n0701_inv                                             | 2                | 2              |
+| sysclk       | sysrst                                              |            | sram_inst/ctrl/_n0701_inv                                             | 1                | 2              |
 | sysclk       | sysrst                                              |            | uart_inst/fifo_instance/wr_wraddr[10]_AND_1237_o                      | 3                | 11             |
 | sysclk       | timers_inst/timer0_inst/_n0147                      |            | timers_inst/timer0_inst/_n0212_inv                                    | 4                | 16             |
 | sysclk       | timers_inst/timer0_inst/_n0152                      |            | timers_inst/timer0_inst/_n0220_inv                                    | 1                | 1              |
-| sysclk       | timers_inst/timer0_inst/tmrr_presrst                |            |                                                                       | 7                | 24             |
+| sysclk       | timers_inst/timer0_inst/tmrr_presrst                |            |                                                                       | 11               | 24             |
 | sysclk       | timers_inst/timer1_inst/_n0122                      |            | timers_inst/timer1_inst/_n0173_inv                                    | 1                | 1              |
 | sysclk       | timers_inst/timer1_inst/_n0129                      |            | timers_inst/timer1_inst/_n0181_inv                                    | 2                | 8              |
 | sysclk       | zpuino/core/Reset_OR_DriverANDClockEnable           |            | zpuino/core/_n1426_inv1                                               | 1                | 1              |
-| sysclk       | zpuino/core/shl/_n0044                              |            | crc16_inst/wb_rst_i_inv                                               | 1                | 3              |
+| sysclk       | zpuino/core/shl/_n0044                              |            | audioblk.slot12/outputs[0].sd/Eqn_0_mand                              | 1                | 3              |
 | sysclk       | zpuino/io/_n0187                                    |            | zpuino/io/_n0193_inv                                                  | 1                | 1              |
 | sysclk       | zpuino/io/_n0190                                    |            | zpuino/io/_n0193_inv                                                  | 1                | 1              |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| sysclk_1mhz  |                                                     |            |                                                                       | 43               | 118            |
+| sysclk_1mhz  |                                                     |            |                                                                       | 48               | 140            |
 | sysclk_1mhz  |                                                     |            | slot14/sid/sid_voice_1/_n0330_inv                                     | 3                | 23             |
 | sysclk_1mhz  |                                                     |            | slot14/sid/sid_voice_2/_n0330_inv                                     | 3                | 23             |
 | sysclk_1mhz  |                                                     |            | slot14/sid/sid_voice_3/_n0330_inv                                     | 3                | 23             |
-| sysclk_1mhz  | slot14/sid/sid_voice_1/reset_Control[1]_OR_256_o    |            |                                                                       | 6                | 24             |
-| sysclk_1mhz  | slot14/sid/sid_voice_1/reset_divider_rst_OR_313_o   |            |                                                                       | 5                | 18             |
-| sysclk_1mhz  | slot14/sid/sid_voice_1/reset_env_cnt_clear_OR_311_o |            | slot14/sid/sid_voice_1/env_count_hold_A_env_count_hold_B_OR_312_o_inv | 5                | 18             |
-| sysclk_1mhz  | slot14/sid/sid_voice_2/reset_Control[1]_OR_256_o    |            |                                                                       | 6                | 24             |
-| sysclk_1mhz  | slot14/sid/sid_voice_2/reset_divider_rst_OR_313_o   |            |                                                                       | 5                | 18             |
-| sysclk_1mhz  | slot14/sid/sid_voice_2/reset_env_cnt_clear_OR_311_o |            | slot14/sid/sid_voice_2/env_count_hold_A_env_count_hold_B_OR_312_o_inv | 5                | 18             |
-| sysclk_1mhz  | slot14/sid/sid_voice_3/reset_Control[1]_OR_256_o    |            |                                                                       | 6                | 24             |
-| sysclk_1mhz  | slot14/sid/sid_voice_3/reset_divider_rst_OR_313_o   |            |                                                                       | 5                | 18             |
-| sysclk_1mhz  | slot14/sid/sid_voice_3/reset_env_cnt_clear_OR_311_o |            | slot14/sid/sid_voice_3/env_count_hold_A_env_count_hold_B_OR_312_o_inv | 5                | 18             |
+| sysclk_1mhz  | rstgen/rstout1_1                                    |            |                                                                       | 1                | 1              |
+| sysclk_1mhz  | slot14/sid/sid_voice_1/reset_Control[1]_OR_257_o    |            |                                                                       | 6                | 24             |
+| sysclk_1mhz  | slot14/sid/sid_voice_1/reset_divider_rst_OR_314_o   |            |                                                                       | 5                | 18             |
+| sysclk_1mhz  | slot14/sid/sid_voice_1/reset_env_cnt_clear_OR_312_o |            | slot14/sid/sid_voice_1/env_count_hold_A_env_count_hold_B_OR_313_o_inv | 5                | 18             |
+| sysclk_1mhz  | slot14/sid/sid_voice_2/reset_Control[1]_OR_257_o    |            |                                                                       | 6                | 24             |
+| sysclk_1mhz  | slot14/sid/sid_voice_2/reset_divider_rst_OR_314_o   |            |                                                                       | 5                | 18             |
+| sysclk_1mhz  | slot14/sid/sid_voice_2/reset_env_cnt_clear_OR_312_o |            | slot14/sid/sid_voice_2/env_count_hold_A_env_count_hold_B_OR_313_o_inv | 5                | 18             |
+| sysclk_1mhz  | slot14/sid/sid_voice_3/reset_Control[1]_OR_257_o    |            |                                                                       | 6                | 24             |
+| sysclk_1mhz  | slot14/sid/sid_voice_3/reset_divider_rst_OR_314_o   |            |                                                                       | 5                | 18             |
+| sysclk_1mhz  | slot14/sid/sid_voice_3/reset_env_cnt_clear_OR_312_o |            | slot14/sid/sid_voice_3/env_count_hold_A_env_count_hold_B_OR_313_o_inv | 5                | 18             |
 | sysclk_1mhz  | sysrst                                              |            |                                                                       | 35               | 147            |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -1006,18 +1041,19 @@ Section 13 - Utilization by Hierarchy
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Module                  | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48A1 | BUFG  | BUFIO | BUFR  | DCM   | PLL_ADV   | Full Hierarchical Name                                        |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| papilio_pro_top/        |           | 51/1930       | 0/3297        | 83/3833       | 0/52          | 0/12      | 0/7     | 0/4   | 0/0   | 0/0   | 0/1   | 0/1       | papilio_pro_top                                               |
-| +bootmux                |           | 12/12         | 0/0           | 17/17         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/bootmux                                       |
-| +clkgen_inst            |           | 3/3           | 2/2           | 1/1           | 0/0           | 0/0       | 0/0     | 4/4   | 0/0   | 0/0   | 1/1   | 1/1       | papilio_pro_top/clkgen_inst                                   |
-| +crc16_inst             |           | 31/31         | 76/76         | 50/50         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/crc16_inst                                    |
-| +gpio_inst              |           | 249/249       | 530/530       | 403/403       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/gpio_inst                                     |
+| papilio_pro_top/        |           | 86/2258       | 2/3704        | 106/4282      | 0/52          | 0/14      | 0/9     | 0/4   | 0/0   | 0/0   | 0/1   | 0/1       | papilio_pro_top                                               |
+| +audioblk.slot12        |           | 81/103        | 187/265       | 159/199       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/audioblk.slot12                               |
+| ++outputs[0].sd         |           | 11/11         | 39/39         | 20/20         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/audioblk.slot12/outputs[0].sd                 |
+| ++outputs[1].sd         |           | 11/11         | 39/39         | 20/20         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/audioblk.slot12/outputs[1].sd                 |
+| +bootmux                |           | 15/15         | 0/0           | 17/17         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/bootmux                                       |
+| +clkgen_inst            |           | 4/4           | 3/3           | 1/1           | 0/0           | 0/0       | 0/0     | 4/4   | 0/0   | 0/0   | 1/1   | 1/1       | papilio_pro_top/clkgen_inst                                   |
+| +crc16_inst             |           | 29/29         | 76/76         | 50/50         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/crc16_inst                                    |
+| +gpio_inst              |           | 247/247       | 530/530       | 396/396       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/gpio_inst                                     |
 | +ibufmiso               |           | 0/1           | 0/0           | 0/1           | 0/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/ibufmiso                                      |
 | ++sync                  |           | 1/1           | 0/0           | 1/1           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/ibufmiso/sync                                 |
 | +ibufrx                 |           | 0/1           | 0/1           | 0/1           | 0/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/ibufrx                                        |
 | ++sync                  |           | 1/1           | 1/1           | 1/1           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/ibufrx/sync                                   |
-| +memarb                 |           | 8/8           | 2/2           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/memarb                                        |
-| +mixer                  |           | 30/41         | 77/116        | 46/66         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/mixer                                         |
-| ++sdo                   |           | 11/11         | 39/39         | 20/20         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/mixer/sdo                                     |
+| +memarb                 |           | 9/9           | 2/2           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/memarb                                        |
 | +npnadapt               |           | 1/1           | 1/1           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/npnadapt                                      |
 | +obuftx                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/obuftx                                        |
 | +oled                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/oled                                          |
@@ -1120,55 +1156,57 @@ Section 13 - Utilization by Hierarchy
 | ++sync                  |           | 1/1           | 1/1           | 1/1           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/pin46/sync                                    |
 | +pin47                  |           | 0/1           | 0/1           | 0/1           | 0/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/pin47                                         |
 | ++sync                  |           | 1/1           | 1/1           | 1/1           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/pin47/sync                                    |
-| +prom                   |           | 3/3           | 2/2           | 4/4           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/prom                                          |
+| +prom                   |           | 3/3           | 2/2           | 3/3           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/prom                                          |
 | ++rom                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 2/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/prom/rom                                      |
-| +rstgen                 |           | 19/19         | 33/33         | 49/49         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/rstgen                                        |
+| +rstgen                 |           | 20/20         | 33/33         | 49/49         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/rstgen                                        |
 | +sigmadelta_inst        |           | 24/24         | 53/53         | 46/46         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/sigmadelta_inst                               |
-| +slot0                  |           | 12/55         | 12/116        | 5/72          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot0                                         |
-| ++zspi                  |           | 26/26         | 72/72         | 45/45         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot0/zspi                                    |
+| +slot0                  |           | 12/55         | 12/116        | 5/73          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot0                                         |
+| ++zspi                  |           | 26/26         | 72/72         | 46/46         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot0/zspi                                    |
 | ++zspiclk               |           | 6/17          | 8/32          | 6/22          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot0/zspiclk                                 |
 | +++pr                   |           | 11/11         | 24/24         | 16/16         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot0/zspiclk/pr                              |
-| +slot1                  |           | 11/50         | 12/118        | 6/75          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1                                         |
-| ++zspi                  |           | 23/23         | 73/73         | 45/45         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1/zspi                                    |
-| ++zspiclk               |           | 7/16          | 9/33          | 6/24          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1/zspiclk                                 |
-| +++pr                   |           | 9/9           | 24/24         | 18/18         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1/zspiclk/pr                              |
-| +slot11                 |           | 7/55          | 18/114        | 1/101         | 0/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11                                        |
-| ++fifo_instance         |           | 6/6           | 17/17         | 19/19         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/fifo_instance                          |
-| ++rx_inst               |           | 12/18         | 23/33         | 12/25         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/rx_inst                                |
+| +slot1                  |           | 11/56         | 12/118        | 6/73          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1                                         |
+| ++zspi                  |           | 26/26         | 73/73         | 45/45         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1/zspi                                    |
+| ++zspiclk               |           | 8/19          | 9/33          | 6/22          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1/zspiclk                                 |
+| +++pr                   |           | 11/11         | 24/24         | 16/16         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot1/zspiclk/pr                              |
+| +slot11                 |           | 7/58          | 18/114        | 2/98          | 0/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11                                        |
+| ++fifo_instance         |           | 7/7           | 17/17         | 19/19         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/fifo_instance                          |
+| ++rx_inst               |           | 12/19         | 23/33         | 8/21          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/rx_inst                                |
 | +++baudgen              |           | 4/4           | 5/5           | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/rx_inst/baudgen                        |
-| +++rxmvfilter           |           | 2/2           | 5/5           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/rx_inst/rxmvfilter                     |
+| +++rxmvfilter           |           | 3/3           | 5/5           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/rx_inst/rxmvfilter                     |
 | ++rx_timer              |           | 10/10         | 17/17         | 35/35         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/rx_timer                               |
-| ++tx_core               |           | 10/10         | 24/24         | 13/13         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/tx_core                                |
-| ++tx_timer              |           | 4/4           | 5/5           | 8/8           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/tx_timer                               |
-| +slot13                 |           | 125/125       | 244/244       | 349/349       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot13                                        |
-| +slot14                 |           | 1/325         | 1/683         | 1/784         | 0/0           | 0/0       | 0/3     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14                                        |
-| ++sid                   |           | 73/324        | 182/682       | 100/783       | 0/0           | 0/0       | 0/3     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid                                    |
-| +++sid_voice_1          |           | 83/83         | 164/164       | 228/228       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/sid_voice_1                        |
-| +++sid_voice_2          |           | 80/80         | 164/164       | 226/226       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/sid_voice_2                        |
-| +++sid_voice_3          |           | 88/88         | 172/172       | 229/229       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/sid_voice_3                        |
-| +sram_inst              |           | 9/112         | 33/199        | 0/189         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/sram_inst                                     |
-| ++ctrl                  |           | 103/103       | 166/166       | 189/189       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/sram_inst/ctrl                                |
-| +timers_inst            |           | 32/135        | 0/242         | 38/181        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst                                   |
-| ++timer0_inst           |           | 67/76         | 174/198       | 92/110        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst/timer0_inst                       |
-| +++pr.tmr0prescale_inst |           | 9/9           | 24/24         | 18/18         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst/timer0_inst/pr.tmr0prescale_inst  |
-| ++timer1_inst           |           | 27/27         | 44/44         | 33/33         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst/timer1_inst                       |
-| +uart_inst              |           | 6/65          | 18/130        | 5/136         | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst                                     |
+| ++tx_core               |           | 12/12         | 24/24         | 13/13         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/tx_core                                |
+| ++tx_timer              |           | 3/3           | 5/5           | 8/8           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot11/tx_timer                               |
+| +slot13                 |           | 150/150       | 244/244       | 342/342       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot13                                        |
+| +slot14                 |           | 2/476         | 1/937         | 1/1099        | 0/0           | 0/2       | 0/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14                                        |
+| ++sid                   |           | 70/474        | 191/936       | 38/1098       | 0/0           | 0/2       | 0/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid                                    |
+| +++fblk.filters         |           | 126/126       | 209/209       | 376/376       | 0/0           | 0/2       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/fblk.filters                       |
+| ++++c                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 2/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/fblk.filters/c                     |
+| +++sid_voice_1          |           | 93/93         | 176/176       | 229/229       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/sid_voice_1                        |
+| +++sid_voice_2          |           | 92/92         | 176/176       | 228/228       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/sid_voice_2                        |
+| +++sid_voice_3          |           | 93/93         | 184/184       | 227/227       | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/slot14/sid/sid_voice_3                        |
+| +sram_inst              |           | 9/126         | 33/199        | 0/190         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/sram_inst                                     |
+| ++ctrl                  |           | 117/117       | 166/166       | 190/190       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/sram_inst/ctrl                                |
+| +timers_inst            |           | 32/138        | 0/242         | 38/183        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst                                   |
+| ++timer0_inst           |           | 73/85         | 174/198       | 99/114        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst/timer0_inst                       |
+| +++pr.tmr0prescale_inst |           | 12/12         | 24/24         | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst/timer0_inst/pr.tmr0prescale_inst  |
+| ++timer1_inst           |           | 21/21         | 44/44         | 31/31         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/timers_inst/timer1_inst                       |
+| +uart_inst              |           | 7/68          | 18/130        | 1/128         | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst                                     |
 | ++fifo_instance         |           | 16/16         | 34/34         | 41/41         | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/fifo_instance                       |
-| ++rx_inst               |           | 9/16          | 23/33         | 13/26         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/rx_inst                             |
+| ++rx_inst               |           | 11/18         | 23/33         | 17/30         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/rx_inst                             |
 | +++baudgen              |           | 4/4           | 5/5           | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/rx_inst/baudgen                     |
 | +++rxmvfilter           |           | 3/3           | 5/5           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/rx_inst/rxmvfilter                  |
 | ++rx_timer              |           | 10/10         | 17/17         | 35/35         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/rx_timer                            |
-| ++tx_core               |           | 13/13         | 23/23         | 21/21         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/tx_core                             |
+| ++tx_core               |           | 13/13         | 23/23         | 13/13         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/tx_core                             |
 | ++tx_timer              |           | 4/4           | 5/5           | 8/8           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/uart_inst/tx_timer                            |
-| +zpuino                 |           | 4/516         | 0/587         | 4/1185        | 0/18          | 0/9       | 0/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino                                        |
-| ++core                  |           | 356/442       | 325/473       | 965/1095      | 0/18          | 0/5       | 0/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core                                   |
-| +++cache                |           | 34/34         | 46/46         | 70/70         | 0/0           | 0/5       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/cache                             |
+| +zpuino                 |           | 4/540         | 0/588         | 4/1187        | 0/18          | 0/9       | 0/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino                                        |
+| ++core                  |           | 368/468       | 326/474       | 963/1093      | 0/18          | 0/5       | 0/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core                                   |
+| +++cache                |           | 39/39         | 46/46         | 70/70         | 0/0           | 0/5       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/cache                             |
 | ++++cachemem            |           | 0/0           | 0/0           | 0/0           | 0/0           | 4/4       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/cache/cachemem                    |
 | ++++tagmem              |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/cache/tagmem                      |
-| +++lsu                  |           | 28/28         | 65/65         | 5/5           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/lsu                               |
-| +++shl                  |           | 24/24         | 37/37         | 55/55         | 18/18         | 0/0       | 4/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/shl                               |
-| ++io                    |           | 49/69         | 83/114        | 71/85         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/io                                     |
-| +++intr_inst            |           | 20/20         | 31/31         | 14/14         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/io/intr_inst                           |
+| +++lsu                  |           | 29/29         | 65/65         | 5/5           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/lsu                               |
+| +++shl                  |           | 32/32         | 37/37         | 55/55         | 18/18         | 0/0       | 4/4     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/core/shl                               |
+| ++io                    |           | 48/67         | 83/114        | 74/89         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/io                                     |
+| +++intr_inst            |           | 19/19         | 31/31         | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/io/intr_inst                           |
 | ++iomemmux              |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/iomemmux                               |
 | ++stack                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 4/4       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | papilio_pro_top/zpuino/stack                                  |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

@@ -70,7 +70,11 @@ dat_q(BITS) <= '0';
 process(clk)
 begin
   if rising_edge(clk) then
-    dat_q(BITS-1 downto 0) <= unsigned(data_in);
+    if rst='1' then
+      dat_q(BITS-1 downto 0)<=(others => '0');
+    else
+      dat_q(BITS-1 downto 0) <= unsigned(data_in);
+    end if;
   end if;
 end process;
 

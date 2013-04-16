@@ -608,35 +608,36 @@ package zpuinopkg is
   end component generic_dp_ram;
 
 	component zpuino_audiomixer2 is
-	  generic (
-		bits: integer := 18;
-		volbits: integer := 8;
-		entries: integer range 2 to 8 := 8
-	  );
-		port (
-		wb_clk_i:   in std_logic;
-		wb_rst_i:   in std_logic;
-		wb_dat_o:   out std_logic_vector(wordSize-1 downto 0);
-		wb_dat_i:   in std_logic_vector(wordSize-1 downto 0);
-		wb_adr_i:   in std_logic_vector(maxIObit downto minIObit);
-		wb_we_i:    in std_logic;
-		wb_cyc_i:   in std_logic;
-		wb_stb_i:   in std_logic;
-		wb_ack_o:   out std_logic;
-		wb_inta_o:  out std_logic;
+    generic (
+    bits: integer := 18;
+    volbits: integer := 8;
+    entries: integer range 2 to 8 := 8;
+    DISABLE_VOLUME: boolean := FALSE -- For simulations
+  );
+	port (
+    wb_clk_i:   in std_logic;
+	 	wb_rst_i:   in std_logic;
+    wb_dat_o:   out std_logic_vector(wordSize-1 downto 0);
+    wb_dat_i:   in std_logic_vector(wordSize-1 downto 0);
+    wb_adr_i:   in std_logic_vector(maxIObit downto minIObit);
+    wb_we_i:    in std_logic;
+    wb_cyc_i:   in std_logic;
+    wb_stb_i:   in std_logic;
+    wb_ack_o:   out std_logic;
+    wb_inta_o:  out std_logic;
 
-		ena:			  in std_logic;
-		data_in1:  	in std_logic_vector(bits-1 downto 0);
-		data_in2:  	in std_logic_vector(bits-1 downto 0);
-		data_in3:  	in std_logic_vector(bits-1 downto 0);
-		data_in4:  	in std_logic_vector(bits-1 downto 0);
-		data_in5:  	in std_logic_vector(bits-1 downto 0);
-		data_in6:  	in std_logic_vector(bits-1 downto 0);
-		data_in7:  	in std_logic_vector(bits-1 downto 0);
-		data_in8:  	in std_logic_vector(bits-1 downto 0);
-		
-		audio_out: 	out std_logic_vector(1 downto 0)
-		);
-	end component zpuino_audiomixer2;  
+    ena:			  in std_logic;
+    data_in1:  	in signed(bits-1 downto 0);
+    data_in2:  	in signed(bits-1 downto 0);
+    data_in3:  	in signed(bits-1 downto 0);
+    data_in4:  	in signed(bits-1 downto 0);
+    data_in5:  	in signed(bits-1 downto 0);
+    data_in6:  	in signed(bits-1 downto 0);
+    data_in7:  	in signed(bits-1 downto 0);
+    data_in8:  	in signed(bits-1 downto 0);
+    
+    audio_out: 	out std_logic_vector(1 downto 0)
+    );
+	end component;
 
 end package zpuinopkg;

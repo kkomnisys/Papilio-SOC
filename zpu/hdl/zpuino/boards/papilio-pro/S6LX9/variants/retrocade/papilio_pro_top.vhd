@@ -412,7 +412,7 @@ begin
     clkout  => sysclk,
     clkout1  => sysclk_sram_we,
     clkout2  => sysclk_sram_wen,
-	clk_1Mhz_out => sysclk_1mhz,
+	  clk_1Mhz_out => sysclk_1mhz,
     rstout  => clkgen_rst
   );
 
@@ -1011,12 +1011,29 @@ slot9: zpuino_empty_device
   -- IO SLOT 12
   --
 
+  audioblk: block
+    signal ch0,ch1,ch2: signed(17 downto 0);
+    signal amin: signed(17 downto 0);
+  begin
+
   ym2149_audio_dac <= ym2149_audio_data & "0000000000";
-  
+
+  amin(17) <= '1';
+  amin(16 downto 0) <= (others => '0');
+
+  ch0 <= signed(sid_audio_data) + amin;
+  ch1 <= signed(ym2149_audio_dac) + amin;
+  ch2 <= signed(sigmadelta_raw) + amin;
+
   slot12: zpuino_audiomixer2
+  generic map (
+    entries => 3,
+    bits => 18,
+    volbits => 16
+  )
   port map (
     wb_clk_i      => wb_clk_i,
-	wb_rst_i      => wb_rst_i,
+	  wb_rst_i      => wb_rst_i,
     wb_dat_o      => slot_read(12),
     wb_dat_i      => slot_write(12),
     wb_adr_i      => slot_address(12),
@@ -1028,18 +1045,19 @@ slot9: zpuino_empty_device
 	
     ena     => '1',
      
-    data_in1  => sid_audio_data,
-    data_in2  => ym2149_audio_dac,
-    data_in3  => sigmadelta_raw,
-	data_in4  => "000000000000000000",
-	data_in5  => "000000000000000000",
-	data_in6  => "000000000000000000",
-	data_in7  => "000000000000000000",
-	data_in8  => "000000000000000000",
+    data_in1  => ch0,
+    data_in2  => ch1,
+    data_in3  => ch2,
+	  data_in4  => "000000000000000000",
+	  data_in5  => "000000000000000000",
+	  data_in6  => "000000000000000000",
+	  data_in7  => "000000000000000000",
+	  data_in8  => "000000000000000000",
 	
-	audio_out => platform_audio_sd
+	  audio_out => platform_audio_sd
   );
 
+  end block;
   --
   -- IO SLOT 13
   --

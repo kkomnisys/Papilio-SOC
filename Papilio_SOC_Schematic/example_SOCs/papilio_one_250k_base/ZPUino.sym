@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<symbol version="7" name="zpuino_papilio_pro">
+<symbol version="7" name="ZPUino">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2013-8-6T23:22:58</timestamp>
+    <timestamp>2013-2-15T23:47:44</timestamp>
+    <pin polarity="Input" x="-16" y="-512" name="CLK" />
+    <pin polarity="Input" x="-16" y="-448" name="SPI_MISO" />
+    <pin polarity="Input" x="-16" y="-384" name="RXD" />
     <pin polarity="Output" x="64" y="0" name="wb_clk_i5" />
     <pin polarity="Output" x="80" y="0" name="wb_rst_i5" />
     <pin polarity="Input" x="96" y="0" name="wb_dat_o5(31:0)" />
@@ -82,6 +85,16 @@
     <pin polarity="Output" x="1408" y="0" name="wb_stb_i14" />
     <pin polarity="Input" x="1424" y="0" name="wb_ack_o14" />
     <pin polarity="Input" x="1440" y="0" name="wb_inta_o14" />
+    <pin polarity="Output" x="1472" y="0" name="wb_clk_i15" />
+    <pin polarity="Output" x="1488" y="0" name="wb_rst_i15" />
+    <pin polarity="Input" x="1504" y="0" name="wb_dat_o15(31:0)" />
+    <pin polarity="Output" x="1520" y="0" name="wb_dat_i15(31:0)" />
+    <pin polarity="Output" x="1536" y="0" name="wb_adr_i15(26:2)" />
+    <pin polarity="Output" x="1552" y="0" name="wb_we_i15" />
+    <pin polarity="Output" x="1568" y="0" name="wb_cyc_i15" />
+    <pin polarity="Output" x="1584" y="0" name="wb_stb_i15" />
+    <pin polarity="Input" x="1600" y="0" name="wb_ack_o15" />
+    <pin polarity="Input" x="1616" y="0" name="wb_inta_o15" />
     <pin polarity="Output" x="1856" y="-560" name="SPI_SCK" />
     <pin polarity="Output" x="1856" y="-496" name="SPI_MOSI" />
     <pin polarity="Output" x="1856" y="-432" name="TXD" />
@@ -92,30 +105,21 @@
     <pin polarity="Input" x="1856" y="-208" name="gpio_i(48:0)" />
     <pin polarity="Input" x="1856" y="-176" name="gpio_spp_data(48:0)" />
     <pin polarity="Output" x="1856" y="-144" name="gpio_spp_read(48:0)" />
-    <pin polarity="Input" x="-16" y="-560" name="CLK" />
-    <pin polarity="Input" x="-16" y="-528" name="SPI_MISO" />
-    <pin polarity="Input" x="-16" y="-496" name="RXD" />
-    <pin polarity="BiDirectional" x="-16" y="-448" name="DRAM_DQ(15:0)" />
-    <pin polarity="Output" x="-16" y="-96" name="LED" />
-    <pin polarity="Output" x="-16" y="-416" name="DRAM_CAS_N" />
-    <pin polarity="Output" x="-16" y="-384" name="DRAM_CKE" />
-    <pin polarity="Output" x="-16" y="-352" name="DRAM_CLK" />
-    <pin polarity="Output" x="-16" y="-320" name="DRAM_CS_N" />
-    <pin polarity="Output" x="-16" y="-288" name="DRAM_RAS_N" />
-    <pin polarity="Output" x="-16" y="-256" name="DRAM_WE_N" />
-    <pin polarity="Output" x="-16" y="-224" name="DRAM_ADDR(12:0)" />
-    <pin polarity="Output" x="-16" y="-192" name="DRAM_BA(1:0)" />
-    <pin polarity="Output" x="-16" y="-160" name="DRAM_DQM(1:0)" />
-    <pin polarity="Output" x="1472" y="0" name="v_wb_dat_o(31:0)" />
-    <pin polarity="Input" x="1488" y="0" name="v_wb_dat_i(31:0)" />
-    <pin polarity="Input" x="1504" y="0" name="v_wb_adr_i(27:0)" />
-    <pin polarity="Input" x="1520" y="0" name="v_wb_we_i" />
-    <pin polarity="Input" x="1536" y="0" name="v_wb_cyc_i" />
-    <pin polarity="Input" x="1552" y="0" name="v_wb_stb_i" />
-    <pin polarity="Output" x="1568" y="0" name="v_wb_ack_o" />
-    <pin polarity="Output" x="1584" y="0" name="vgaclkout" />
+    <pin polarity="Output" x="1648" y="0" name="v_wb_dat_o(31:0)" />
+    <pin polarity="Input" x="1664" y="0" name="v_wb_dat_i(31:0)" />
+    <pin polarity="Input" x="1680" y="0" name="v_wb_adr_i(27:0)" />
+    <pin polarity="Input" x="1696" y="0" name="v_wb_we_i" />
+    <pin polarity="Input" x="1712" y="0" name="v_wb_cyc_i" />
+    <pin polarity="Input" x="1728" y="0" name="v_wb_stb_i" />
+    <pin polarity="Output" x="1744" y="0" name="v_wb_ack_o" />
+    <pin polarity="Output" x="1760" y="0" name="vgaclkout" />
     <graph>
         <rect width="1752" x="48" y="-588" height="560" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="56" y="-512" type="pin CLK" />
+        <line x2="-16" y1="-512" y2="-512" x1="48" />
+        <line x2="-16" y1="-448" y2="-448" x1="48" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="56" y="-384" type="pin RXD" />
+        <line x2="-16" y1="-384" y2="-384" x1="48" />
         <line x2="64" y1="0" y2="-28" x1="64" />
         <line x2="80" y1="0" y2="-28" x1="80" />
         <line x2="96" y1="0" y2="-28" x1="96" />
@@ -196,14 +200,26 @@
         <line x2="1408" y1="0" y2="-28" x1="1408" />
         <line x2="1424" y1="0" y2="-28" x1="1424" />
         <line x2="1440" y1="0" y2="-28" x1="1440" />
+        <line x2="1472" y1="0" y2="-28" x1="1472" />
+        <line x2="1488" y1="0" y2="-28" x1="1488" />
+        <line x2="1504" y1="0" y2="-28" x1="1504" />
+        <line x2="1520" y1="0" y2="-28" x1="1520" />
+        <line x2="1536" y1="0" y2="-28" x1="1536" />
+        <line x2="1552" y1="0" y2="-28" x1="1552" />
+        <line x2="1568" y1="0" y2="-28" x1="1568" />
+        <line x2="1584" y1="0" y2="-28" x1="1584" />
+        <line x2="1600" y1="0" y2="-28" x1="1600" />
+        <line x2="1616" y1="0" y2="-28" x1="1616" />
         <text style="fontsize:24;fontname:Arial" x="80" y="-48">WB Slot 5</text>
         <text style="fontsize:24;fontname:Arial" x="256" y="-48">WB Slot 8</text>
         <text style="fontsize:24;fontname:Arial" x="436" y="-48">WB Slot 9</text>
         <text style="fontsize:24;fontname:Arial" x="600" y="-48">WB Slot 10</text>
         <text style="fontsize:24;fontname:Arial" x="780" y="-48">WB Slot 11</text>
         <text style="fontsize:24;fontname:Arial" x="956" y="-48">WB Slot 12</text>
+        <text style="fontsize:24;fontname:Arial" x="1484" y="-48">WB Slot 15</text>
         <text style="fontsize:24;fontname:Arial" x="1132" y="-48">WB Slot 13</text>
         <text style="fontsize:24;fontname:Arial" x="1308" y="-48">WB Slot 14</text>
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="56" y="-448" type="pin SPI_MISO" />
         <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="276" y="-600" type="symbol" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="1784" y="-560" type="pin SPI_SCK" />
         <line x2="1800" y1="-560" y2="-560" x1="1856" />
@@ -238,47 +254,18 @@
         <rect width="144" x="944" y="-68" height="40" />
         <rect width="144" x="1120" y="-68" height="40" />
         <rect width="144" x="1296" y="-68" height="40" />
+        <rect width="144" x="1472" y="-68" height="40" />
+        <rect width="112" x="1648" y="-68" height="40" />
+        <text style="fontsize:24;fontname:Arial" x="1672" y="-48">Video</text>
         <text style="fontsize:24;fontname:Arial" x="1548" y="-332">GPIO</text>
+        <line x2="1648" y1="0" y2="-44" x1="1648" />
+        <line x2="1664" y1="0" y2="-28" x1="1664" />
+        <line x2="1680" y1="0" y2="-28" x1="1680" />
+        <line x2="1696" y1="0" y2="-28" x1="1696" />
+        <line x2="1712" y1="0" y2="-28" x1="1712" />
+        <line x2="1728" y1="0" y2="-28" x1="1728" />
+        <line x2="1744" y1="0" y2="-28" x1="1744" />
+        <line x2="1760" y1="0" y2="-28" x1="1760" />
         <line x2="1800" y1="-304" y2="-304" x1="1856" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="56" y="-560" type="pin CLK" />
-        <line x2="-16" y1="-560" y2="-560" x1="48" />
-        <line x2="-16" y1="-528" y2="-528" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="56" y="-528" type="pin SPI_MISO" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="56" y="-496" type="pin RXD" />
-        <line x2="-16" y1="-496" y2="-496" x1="48" />
-        <text style="fontsize:24;fontname:Arial" x="192" y="-484">External SDRAM</text>
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-448" type="pin DRAM_DQ(15:0)" />
-        <line x2="-16" y1="-448" y2="-448" x1="48" />
-        <line x2="-16" y1="-96" y2="-96" x1="48" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="124" y="-96" type="pin LED" />
-        <rect width="250" x="50" y="-472" height="328" />
-        <line x2="-16" y1="-416" y2="-416" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-416" type="pin DRAM_CAS_N" />
-        <line x2="-16" y1="-384" y2="-384" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-384" type="pin DRAM_CKE" />
-        <line x2="-16" y1="-352" y2="-352" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-352" type="pin DRAM_CLK" />
-        <line x2="-16" y1="-320" y2="-320" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-320" type="pin DRAM_CS_N" />
-        <line x2="-16" y1="-288" y2="-288" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-288" type="pin DRAM_RAS_N" />
-        <line x2="-16" y1="-256" y2="-256" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-256" type="pin DRAM_WE_N" />
-        <line x2="-16" y1="-224" y2="-224" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-224" type="pin DRAM_ADDR(12:0)" />
-        <line x2="-16" y1="-192" y2="-192" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-192" type="pin DRAM_BA(1:0)" />
-        <line x2="-16" y1="-160" y2="-160" x1="48" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="60" y="-160" type="pin DRAM_DQM(1:0)" />
-        <rect width="112" x="1472" y="-68" height="40" />
-        <text style="fontsize:24;fontname:Arial" x="1496" y="-48">Video</text>
-        <line x2="1472" y1="0" y2="-44" x1="1472" />
-        <line x2="1488" y1="0" y2="-28" x1="1488" />
-        <line x2="1504" y1="0" y2="-28" x1="1504" />
-        <line x2="1520" y1="0" y2="-28" x1="1520" />
-        <line x2="1536" y1="0" y2="-28" x1="1536" />
-        <line x2="1552" y1="0" y2="-28" x1="1552" />
-        <line x2="1568" y1="0" y2="-28" x1="1568" />
-        <line x2="1584" y1="0" y2="-28" x1="1584" />
     </graph>
 </symbol> 

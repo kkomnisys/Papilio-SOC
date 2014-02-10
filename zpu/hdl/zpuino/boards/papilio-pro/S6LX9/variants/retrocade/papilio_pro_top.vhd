@@ -858,7 +858,7 @@ begin
   -- IO SLOT 6
   --
 
-  slot1: zpuino_spi
+  slot1: zpuino_spi2
   port map (
     wb_clk_i      => wb_clk_i,
 	 	wb_rst_i      => wb_rst_i,

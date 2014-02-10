@@ -207,6 +207,27 @@ package zpuinopkg is
   );
   end component zpuino_spi;
 
+    component zpuino_spi2 is
+  port (
+    wb_clk_i: in std_logic;
+	 	wb_rst_i: in std_logic;
+    wb_dat_o: out std_logic_vector(wordSize-1 downto 0);
+    wb_dat_i: in std_logic_vector(wordSize-1 downto 0);
+    wb_adr_i: in std_logic_vector(maxIObit downto minIObit);
+    wb_we_i:  in std_logic;
+    wb_cyc_i: in std_logic;
+    wb_stb_i: in std_logic;
+    wb_ack_o: out std_logic;
+    wb_inta_o:out std_logic;
+
+    mosi:     out std_logic;
+    miso:     in std_logic;
+    sck:      out std_logic;
+
+    enabled:  out std_logic
+  );
+  end component zpuino_spi2;
+  
   component zpuino_uart is
   generic (
     bits: integer := 11
